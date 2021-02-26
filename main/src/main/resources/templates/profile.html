@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Home</title>
+</head>
+
+<body>
+    <th:block th:insert="fragments/header.html :: header"/>
+
+    <div class="container-fluid" style="padding-top: 4%">
+        <div class="row">
+            <div class="col-md-4">
+                <h5 class="user_wallet"> В кошельке <span th:text="${wallet}"></span> BYN.</h5><br>
+                <form th:action="@{/addMoney/{uid}(uid=${account.id})}" method="post" class="user_wallet">
+                    <label>
+                        <input type="text" class="form-control" placeholder="добавить деньжат" name="money" pattern="^[0-9]+$" required>
+                    </label>
+                        <input class="btn btn-warning btn-md navBarClass" type="submit" value="добавить">
+                </form>
+            </div>
+
+            <div class="col">
+                <div class="main" style="text-align: center; color: white">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="left" th:if="${passport} == null">
+                                <h6>Заполните паспортные данные:</h6><br>
+                                <form th:action="@{/addPassport}" method="post">
+                                    <div class="col-xs-10">
+                                        <input class="form-control" type="text" placeholder="First name" name="firstName" required>
+                                    </div><br>
+
+                                    <div class="col-xs-10">
+                                        <input class="form-control" type="text" placeholder="Last name" name="lastName" required>
+                                    </div><br>
+                                    <div class="col-xs-10">
+                                        <input class="form-control" type="text" placeholder="Passport series" name="passportSeries" required>
+                                    </div><br>
+                                    <div class="col-xs-10">
+                                        <input class="form-control" type="text" placeholder="Passport number" name="passportNumber" required>
+                                    </div><br>
+                                    <div class="col-xs-10">
+                                        <input class="form-control" type="date" placeholder="Date of birth" name="date" required>
+                                    </div><br>
+                                        <input class="btn btn-warning btn-md navBarClass" type="submit" value="сохранить">
+                                </form>
+                            </div>
+                            <div class="left" th:if="${passport} != null">
+                                <h6>Ваши паспортные данные:</h6><br>
+                                <table class="table table-sm tableProfile">
+                                    <tr>
+                                        <th>First name</th>
+                                        <td th:text="${passport.firstName}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Last name</th>
+                                        <td th:text="${passport.lastName}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Passport series</th>
+                                        <td th:text="${passport.passportSeries}">data</td>
+                                    </tr>
+                                    <tr>
+                                        <th>Passport number</th>
+                                        <td th:text="${passport.passportNumber}"></td>
+                                    </tr>
+                                    <tr>
+                                        <th>Date of birth</th>
+                                        <td th:text="${passport.birthDate}"></td>
+                                    </tr>
+                                </table><br>
+                                <a class="btn btn-warning btn-md navBarClass" th:href="@{/edit}">изменить</a>
+
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm">
+                            <div class="right" th:if="${passport} != null" >
+                                <h6>Выберете визу:</h6><br>
+                                <form th:action="@{/addVisas}" method="post">
+                                <table class="table table-sm tableProfile">
+                                    <thead>
+                                        <tr>
+                                            <th>Страна</th>
+                                            <th>Стоимость</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr th:each="visa : ${visas}">
+                                            <td><span th:text="${visa.country}"> </span></td>
+                                            <td><span th:text="${visa.cost}"> </span></td>
+                                            <td><input type="checkbox" name="id" th:value="${visa.id}" required></td>
+                                        </tr>
+                                    </tbody>
+                                </table><br>
+                                    <input class="btn btn-warning btn-md navBarClass" type="submit" value="добавить">
+                                </form>
+                            </div><br>
+                            <div class="right" th:if="${visasInPassport} != null" >
+                                <h6>Ваши визы:</h6><br>
+                                <table class="table table-sm tableProfile">
+                                    <tbody>
+                                    <tr th:each="visa : ${visasInPassport}">
+                                        <td><span th:text="${visa.country}"> </span></td>
+                                        <td><span th:text="${visa.cost}"> </span></td>
+                                        <td><a class="btn btn-warning btn-md navBarClass" th:href="@{/delete/{uid}(uid=${visa.id})}">удалить</a> </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:insert="fragments/footer.html :: footer"/>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>

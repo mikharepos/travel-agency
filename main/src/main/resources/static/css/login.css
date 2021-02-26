@@ -1,0 +1,47 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+.card{
+    padding-top: 20px;
+    border-radius: 30px;
+    height: 370px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.card-header h2{
+    color: white;
+    text-align: center;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: rgba(217, 179, 11, 1);
+    color: black;
+    border:0;
+}
+
+.remember{
+    color: white;
+}
+
+.remember input {
+    width: 20px;
+    height: 20px;
+    margin-left: 15px;
+    margin-right: 5px;
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+}
+
+
+
+

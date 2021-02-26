@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+        <link rel="stylesheet" th:href="@{/css/main.css}">
+        <title>Корзина</title>
+
+    </head>
+    <body>
+        <th:block th:insert="fragments/header.html :: header"/>
+
+        <div class="container-fluid" style="padding-top: 5%">
+            <div class="row">
+                <div class="col-md-6" style="text-align: center; color: white">
+                    <h3>Туры в корзине:</h3><br>
+                    <table class="table table-hover table-sm">
+                        <thead>
+                            <tr>
+                                <th>Куда</th>
+                                <th>Откуда</th>
+                                <th>Отправление</th>
+                                <th>Возвращение</th>
+                                <th>Стоимость</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="tour : ${tourInCart}">
+                                <td><span th:text="${tour.destination}"> </span></td>
+                                <td><span th:text="${tour.departure}"> </span></td>
+                                <td><span th:text="${tour.startTime}"> </span></td>
+                                <td><span th:text="${tour.endTime}"> </span></td>
+                                <td><span th:text="${tour.cost}"> </span></td>
+                                <td><a class="btn btn-danger btn-md navBarClass" th:href="@{/user/delete/{uid}(uid=${tour.id})}">удалить</a> </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </div>
+
+                <div class="col-md-6" style="text-align: center">
+                    <h3 style="color: white">Общая сумма покупки:<span th:text="${total}"></span>рублей.</h3><br>
+                    <div>
+                        <a class="btn btn-success btn-md navBarClass" th:href="@{/user/tours/pay/{uid}(uid=${total})}">Оплатить</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    <th:block th:insert="fragments/footer.html :: footer"/>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    </body>
+</html>

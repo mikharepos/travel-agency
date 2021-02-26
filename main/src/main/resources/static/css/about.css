@@ -1,0 +1,59 @@
+@import url('https://fonts.googleapis.com/css2?family=Lalezar&display=swap');
+
+html, body {
+    background-image: url('../images/img_main_page.jpg');
+    background-size: cover;
+    height: 100%;
+}
+
+.container {
+    height: 90%;
+}
+
+.btn {
+    margin: 30px 25px 25px 25px;
+    border: none;
+    border-radius: 7px;
+    background-color: rgba(217, 179, 11, 1);
+    width: 100px;
+}
+
+.btn:hover{
+    transform: scale(1.2);
+    transition: 0.5s;
+    background-color: rgba(218, 1180, 11, 1);
+}
+
+.btn a {
+    text-decoration: none;
+    color: black;
+}
+
+.contacts {
+    text-align: center;
+    color: white;
+}
+
+.feedback {
+    color: white;
+}
+
+input {
+    width: 250px;
+}
+
+.textarea {
+    width: 500px;
+    height: 240px;
+}
+
+
+
+
+
+
+
+
+
+
+

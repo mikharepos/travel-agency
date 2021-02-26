@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Главная</title>
+
+</head>
+<body>
+    <th:block th:insert="fragments/header.html :: header"/>
+
+    <div class="container" style="padding-top: 4%">
+        <div class="col-md-6" style="text-align: center">
+            <div class="row">
+                <form th:action="@{/admin/addTour}" th:object="${tour}" method="post" style="display: flex">
+                    <div class="col-sm-10" style="color: white; text-align: center">
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{tourName}" type="text" id="tourName" placeholder="tourName" required>
+                        </div><br>
+
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{destination}" type="text" id="destination" placeholder="destination" required>
+                        </div><br>
+
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{departure}" type="text" id="departure" placeholder="departure" required>
+                        </div><br>
+
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{cost}" type="text" id="cost" placeholder="cost" required>
+                        </div><br>
+
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{startTime}" type="date" id="startTime" placeholder="startTime" required>
+                        </div><br>
+
+                        <div class="col-xs-10">
+                            <input class="form-control" th:field="*{endTime}" type="date" id="endTime" placeholder="endTime" required>
+                        </div><br>
+                            <select class="custom-select mr-sm-2" th:field="*{statusOfTheTour}" id="StatusOfTheTour" type="text" required>
+                                <option value="NORMAL">Обычный</option>
+                                <option value="LAST_MINUTE">Горящий</option>
+                            </select><br><br>
+
+                            <select class="custom-select mr-sm-2" th:field="*{typeOfTour}" id="typeOfTour" type="text" required>
+                                <option value="VACATION">Отдых</option>
+                                <option value="SHOPPING">Шоппинг</option>
+                                <option value="EXCURSION">Экскурсия</option>
+                            </select>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div>
+                            <textarea style="height: 408px" class="form-control" th:field="*{description}"
+                                      type="text" id="tourDescription" placeholder="tourDescription" required></textarea><br>
+                        <input class="btn btn-success btn-md navBarClass" type="submit" value="сохранить" style="margin: 0">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:insert="fragments/footer.html :: footer"/>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&display=swap');
+
+
+html, body {
+    background-image: url('../images/main.jpg');
+    background-color: forestgreen;
+    background-size: cover;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.container{
+    height: 100%;
+}
+.text-main {
+    font-size: 70px;
+    color: white;
+    font-family: 'Merriweather', serif;
+    letter-spacing: 20px;
+}
+
+.navBarClass {
+    width: 170px;
+    margin-right: 25px;
+}
+
+.navBarClass:hover {
+    transition: 0.5s;
+    background-color: rgba(218, 1180, 11, 1);
+}
+
+.footer{
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    left: 0;
+}
+
+.tableProfile{
+    background-color: rgba(0, 0, 0, 0.5);
+}
+

@@ -1,0 +1,42 @@
+.card{
+    border-radius: 30px;
+    height: 380px;
+    margin-top: auto;
+    margin-bottom: auto;
+    width: 400px;
+    background-color: rgba(0,0,0,0.5);
+}
+
+.card-header h3{
+    color: white;
+    text-align: center;
+}
+
+.input-group-prepend span{
+    width: 50px;
+    background-color: rgba(217, 179, 11, 1);
+    color: black;
+    border:0;
+}
+
+.btn-block{
+    border: none;
+    border-radius: 7px;
+    color: black;
+    background-color: rgba(217, 179, 11, 1);
+}
+
+.btn-block:hover{
+    transition: 0.5s;
+    background-color: rgba(218, 1180, 11, 1);
+}
+
+.links{
+    color: white;
+}
+
+.links a{
+    margin-left: 4px;
+}
+
+

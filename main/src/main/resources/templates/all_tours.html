@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" th:href="@{/css/main.css}">
+    <title>Home</title>
+</head>
+
+<body>
+
+    <th:block th:insert="fragments/header.html :: header"/>
+
+    <div class="container-fluid" style="padding-top: 2%">
+        <div class="row justify-content-center">
+            <div th:each="tour : ${allTours}" class="card text-center bg-light mb-3" style="width: 15rem; margin: 20px;
+            background-color: aliceblue">
+                <div class="card-body">
+                    <a th:href="@{/tour/description/{uid}(uid=${tour.id})}"><h5 class="card-title"
+                                                                                th:text="${tour.tourName}">Название тура</h5></a>
+                    <h6>Цена тура:<span class="card-subtitle mb-2 text-muted" th:text="${tour.cost}">цена</span></h6>
+                    <div th:if="${tour.statusOfTheTour} != ${tour.statusOfTheTour.NORMAL}">
+                        <h6 style="background-color: red; color: white">Горящий тур: <span th:text="${tour.cost} - (${tour.cost} * 20 / 100)"></span></h6>
+                    </div>
+                    Тип: <span class="card-text" th:text="${tour.typeOfTour}"></span>
+                </div>
+                <div class="card-footer bg-transparent border-success">
+                    <a th:href="@{/add/in/basket/{uid}(uid=${tour.id})}" class="btn btn-success btn-xs" sec:authorize="hasRole('USER')">В корзину</a>
+                    <a th:href="@{/admin/delete/{uid}(uid=${tour.id})}" class="btn btn-success btn-xs" sec:authorize="hasRole('ADMIN')">Удалить</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:insert="fragments/footer.html :: footer"/>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+
+</html>
