@@ -3,7 +3,6 @@ package by.mikhasiuta.controller;
 import by.mikhasiuta.model.Account;
 import by.mikhasiuta.registration.RegistrationService;
 import by.mikhasiuta.repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,7 +14,6 @@ public class RegistrationController {
     private final RegistrationService registrationService;
     private final UserRepository userRepository;
 
-    @Autowired
     public RegistrationController(RegistrationService registrationService, UserRepository userRepository) {
         this.registrationService = registrationService;
         this.userRepository = userRepository;
@@ -34,7 +32,6 @@ public class RegistrationController {
             model.addAttribute("message", "User exists!");
             return "register";
         }
-
         registrationService.registerUser(account);
         return "redirect:/login";
     }

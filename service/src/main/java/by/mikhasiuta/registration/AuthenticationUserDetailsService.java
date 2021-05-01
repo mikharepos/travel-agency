@@ -3,7 +3,6 @@ package by.mikhasiuta.registration;
 import by.mikhasiuta.repository.UserRepository;
 import by.mikhasiuta.exception.UserNotFoundException;
 import by.mikhasiuta.model.Account;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.InternalAuthenticationServiceException;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,7 +16,6 @@ public class AuthenticationUserDetailsService implements UserDetailsService {
 
     private final UserRepository userRepository;
 
-    @Autowired
     public AuthenticationUserDetailsService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }

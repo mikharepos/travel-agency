@@ -1,7 +1,6 @@
 package by.mikhasiuta.security;
 
 import by.mikhasiuta.registration.AuthenticationUserDetailsService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
@@ -17,7 +16,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final AuthenticationUserDetailsService userDetailsService;
 
-    @Autowired
     public WebSecurityConfig(AuthenticationUserDetailsService userDetailsService) {
         this.userDetailsService = userDetailsService;
     }

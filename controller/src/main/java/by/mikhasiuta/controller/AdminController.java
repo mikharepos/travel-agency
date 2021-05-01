@@ -3,7 +3,6 @@ package by.mikhasiuta.controller;
 import by.mikhasiuta.bank.BankService;
 import by.mikhasiuta.model.Tour;
 import by.mikhasiuta.tour.TourService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -16,7 +15,6 @@ public class AdminController {
     private final TourService tourService;
     private final BankService bankService;
 
-    @Autowired
     public AdminController(TourService tourService, BankService bankService) {
         this.tourService = tourService;
         this.bankService = bankService;
@@ -30,14 +28,14 @@ public class AdminController {
     }
 
     @GetMapping("/admin/edit/{id}")
-    public String showUpdateForm(@PathVariable("id") Integer id, Model model) {
+    public String showUpdateForm(@PathVariable Integer id, Model model) {
         Tour tour = tourService.findById(id);
         model.addAttribute("tour", tour);
         return "update_tour";
     }
 
     @PostMapping("/admin/update{id}")
-    public String updateTour(@PathVariable("id") Integer id, Tour tour) {
+    public String updateTour(@PathVariable Integer id, Tour tour) {
         tourService.updateTour(id, tour);
         return "redirect:/view/tours";
     }

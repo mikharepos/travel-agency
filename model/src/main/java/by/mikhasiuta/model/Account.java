@@ -24,7 +24,7 @@ public class Account {
     private String email;
 
     @Enumerated(EnumType.STRING)
-    private Role role = Role.USER;
+    private Role role = Role.ADMIN;
 
     private Date dateCreated = new Date();
 

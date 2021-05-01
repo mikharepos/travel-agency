@@ -14,13 +14,11 @@
 </head>
     <body>
         <th:block th:insert="fragments/header.html :: header"/>
-
         <div th:if="${message}">
             <p style="color: white">User exist!</p>
         </div>
         <div class="container" style="padding-top: 5%">
-
-        <div class="d-flex justify-content-center h-100">
+            <div class="d-flex justify-content-center h-100">
             <div class="card">
                 <div class="card-header">
                     <h3>Создай новый аккаунт</h3>

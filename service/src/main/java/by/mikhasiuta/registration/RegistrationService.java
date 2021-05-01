@@ -20,7 +20,7 @@ public class RegistrationService {
         this.encoder = encoder;
     }
 
-    public  void registerUser(Account account) {
+    public void registerUser(Account account) {
         account.setPassword(encoder.encode(account.getPassword()));
         accountService.saveAccount(account);
     }

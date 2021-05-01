@@ -7,7 +7,6 @@ import by.mikhasiuta.passport.PassportService;
 import by.mikhasiuta.user.UserService;
 import by.mikhasiuta.visa.VisaService;
 import by.mikhasiuta.wallet.WalletService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -23,7 +22,6 @@ public class UserController {
     private final VisaService visaService;
     private final BasketService basketService;
 
-    @Autowired
     public UserController(UserService userService, WalletService walletService, PassportService passportService,
                           VisaService visaService, BasketService basketService) {
         this.userService = userService;
